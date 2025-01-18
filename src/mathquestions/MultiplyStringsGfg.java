@@ -4,8 +4,8 @@ import java.math.BigInteger;
 
 public class MultiplyStringsGfg {
     public static void main(String[] args) {
-        System.out.println("0033 X 2 = "+multiplyStrings("0033","2"));
-        System.out.println("11 X 23 = "+multiplyStrings("11","23"));
+        System.out.println("0033 X 2 = "+multiplyStrings("0033","2")); //66
+        System.out.println("11 X 23 = "+multiplyStrings("11","23")); //253
     }
 
     static String multiplyStrings(String s1,String s2) {
