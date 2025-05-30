@@ -77,4 +77,25 @@ public class MinimumWindowSubstring {
         // If no valid window was found, return empty string
         return minWindow[1] >= s.length() ? "" : s.substring(minWindow[0], minWindow[1] + 1);
     }
+
+    /**
+     * TIME and SPACE COMPLEXITY => O(n) and O(1) respectively.
+     *
+     * Why TC is O(n)?
+     * Each character is processed at most once when entering the window (endIndex pointer) and once when leaving the window
+     * (startIndex pointer).
+     * All operations inside the loop (like map.put, map.getOrDefault, comparisons) are O(1).
+     * So total work done is proportional to O(n), not O(n²).
+     *
+     * Why SC is O(1)?
+     * We use a Map<Character, Integer> called charCount. The map stores only characters, and in the worst case it holds:
+     * All unique characters in t, and A few extra during processing of s.
+     * So, it's O(k) where k is the number of unique characters (from both t and s). But since the character set is bounded
+     * (e.g., ASCII has 128 chars, Extended ASCII has 256, Unicode range is also finite), we treat it as O(1) in practice.
+     *
+     * So yes:
+     * Time complexity: O(n)
+     * Space complexity: O(1) (assuming character set size is bounded)
+     *
+     */
 }
