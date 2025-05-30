@@ -1,4 +1,4 @@
-package blind75Sheet;
+package blind75Sheet.slidingWindow;
 
 import java.util.HashMap;
 import java.util.Map;

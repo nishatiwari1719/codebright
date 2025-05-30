@@ -1,0 +1,80 @@
+package blind75Sheet.slidingWindow;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MinimumWindowSubstring {
+    public static void main(String[] args) {
+        System.out.println("ADOBECODEBANC, ABC = " + minWindow("ADOBECODEBANC", "ABC")); //"BANC"
+        System.out.println("a, a = " + minWindow("a", "a")); //"a"
+        System.out.println("a, aa = " + minWindow("a", "aa")); //""
+    }
+
+    /**
+     * Finds the minimum window in 's' which contains all the characters of string 't'.
+     *
+     * @param s The source string to search within.
+     * @param t The target string with characters to match.
+     * @return The smallest substring of 's' containing all characters from 't'.
+     */
+    public static String minWindow(String s, String t) {
+        // If source string is smaller than target, no window is possible
+        if (s.length() < t.length()) {
+            return "";
+        }
+
+        // Map to store the frequency of characters in 't'
+        Map<Character, Integer> charCount = new HashMap<>();
+        for (char ch : t.toCharArray()) {
+            charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
+        }
+
+        int targetCharsRemaining = t.length(); // Total characters from 't' that still need to be matched
+        int[] minWindow = {0, Integer.MAX_VALUE}; // Store start and end index of the minimum window found
+        int startIndex = 0; // Start index of current window
+
+        // Iterate over each character in 's' using a sliding window approach
+        for (int endIndex = 0; endIndex < s.length(); endIndex++) {
+            char ch = s.charAt(endIndex);
+
+            // If the character is in the target and needed, reduce the count of remaining characters
+            if (charCount.containsKey(ch) && charCount.get(ch) > 0) {
+                targetCharsRemaining--;
+            }
+
+            // Decrease frequency of character in the map (even if it's not in target — for balancing when shrinking window)
+            charCount.put(ch, charCount.getOrDefault(ch, 0) - 1);
+
+            // When all target characters have been matched in the window
+            if (targetCharsRemaining == 0) {
+                // Try to shrink the window from the start as much as possible
+                while (true) {
+                    char charAtStart = s.charAt(startIndex);
+
+                    // If character is needed and its count is zero, we can't remove it
+                    if (charCount.containsKey(charAtStart) && charCount.get(charAtStart) == 0) {
+                        break;
+                    }
+
+                    // Else increase its count and move the start forward
+                    charCount.put(charAtStart, charCount.getOrDefault(charAtStart, 0) + 1);
+                    startIndex++;
+                }
+
+                // Update minimum window if current one is smaller
+                if (endIndex - startIndex < minWindow[1] - minWindow[0]) {
+                    minWindow[0] = startIndex;
+                    minWindow[1] = endIndex;
+                }
+
+                // Move start forward to look for a new smaller valid window
+                charCount.put(s.charAt(startIndex), charCount.getOrDefault(s.charAt(startIndex), 0) + 1);
+                targetCharsRemaining++;
+                startIndex++;
+            }
+        }
+
+        // If no valid window was found, return empty string
+        return minWindow[1] >= s.length() ? "" : s.substring(minWindow[0], minWindow[1] + 1);
+    }
+}
