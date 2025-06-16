@@ -65,6 +65,20 @@ public class NumberOfIslandsBFS {
     }
 
     /**
-     * TC = O(m x n), SC = O(min(m x n))
+     * TC = O(m x n), SC = O(min(m, n))
+     *
+     * Space Complexity:
+     * BFS or iterative DFS, where the queue or stack grows depending on the frontier of expansion.
+     * In the worst case, the queue (or stack) holds only the current layer of nodes (cells) being processed.
+     *
+     * | Space Complexity | Description                                                     | When it Occurs               |
+     * | ---------------- | --------------------------------------------------------------- | ---------------------------- |
+     * | `O(m × n)`       | Memory used per cell (explicit visited array or deep recursion) | Recursive DFS, visited\[]\[] |
+     * | `O(min(m, n))`   | Only frontier (edge) cells are held at once                     | BFS or iterative DFS         |
+     *
+     *  Which one is better?
+     *  O(min(m, n)) is much more efficient in memory usage, especially on large grids.
+     *  It avoids StackOverflowError from recursion.
+     *  Iterative BFS/DFS is preferred in practice when space is a concern.
      */
 }
