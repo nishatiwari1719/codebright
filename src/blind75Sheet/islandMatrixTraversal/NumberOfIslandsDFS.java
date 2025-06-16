@@ -51,5 +51,20 @@ public class NumberOfIslandsDFS {
 
     /**
      * TC = O(m x n), SC = O(m x n)
+     *
+     * Space Complexity:
+     * DFS uses recursive calls, so the maximum depth of recursion depends on the shape of the island.
+     * In the worst case, if the island covers the entire grid (e.g., a big rectangle of '1's), the recursion can go
+     * as deep as m × n levels (in pathological, snake-like cases).
+     *
+     * | Space Complexity | Description                                                     | When it Occurs               |
+     * | ---------------- | --------------------------------------------------------------- | ---------------------------- |
+     * | `O(m × n)`       | Memory used per cell (explicit visited array or deep recursion) | Recursive DFS, visited\[]\[] |
+     * | `O(min(m, n))`   | Only frontier (edge) cells are held at once                     | BFS or iterative DFS         |
+     *
+     *  Which one is better?
+     *  O(min(m, n)) is much more efficient in memory usage, especially on large grids.
+     *  It avoids StackOverflowError from recursion.
+     *  Iterative BFS/DFS is preferred in practice when space is a concern.
      */
 }
