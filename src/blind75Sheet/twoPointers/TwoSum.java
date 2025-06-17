@@ -24,6 +24,27 @@ public class TwoSum {
     }
 }
 
+/**
+ * Most optimised solution - Time and Space complexity analysis:
+ * TIME COMPLEXITY = O(n)
+ * SPACE COMPLEXITY = O(n)
+ *
+ * We are using a HashMap to store up to n elements from the array (nums[i] as key and i as value).
+ * In the worst case, where no solution is found until the last iteration, we will store all n numbers in the map.
+ * So, space complexity = O(n) due to the auxiliary space used by the map.
+ *
+ * Can there be O(1) Space Complexity in any case?
+ * O(1) space would mean no additional space is used that grows with input size — e.g., only a few variables or counters.
+ * The brute force approaches at the bottom of our code that use just a result[] = new int[2]; and two loops do have
+ * O(1) space complexity (though their time complexity is O(n²)).
+ *
+ * | Approach         | Time Complexity | Space Complexity |
+ * | ---------------- | --------------- | ---------------- |
+ * | One-pass HashMap | O(n)            | O(n)             |
+ * | Two-pass HashMap | O(n)            | O(n)             |
+ * | Brute-force      | O(n²)           | O(1)             |
+ */
+
 //optimised.. time comp is O(n) but we have compromised space for time - Two-pass Hash Table
 /*        int result[] = new int[2];
         HashMap<Integer, Integer> map = new HashMap<>();
