@@ -61,6 +61,9 @@ public class LinkedListCycle {
 
     /**
      * Create list with cycle at position 'pos'.
+     * 
+     * This method is not a part of the solution.
+     * It is only used for preparing test cases.
      *
      * @param values
      * @param pos
