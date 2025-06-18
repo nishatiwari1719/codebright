@@ -1,18 +1,5 @@
 package blind75Sheet.fastAndSlowPointers;
 
-/**
- * Definition for singly-linked list.
- */
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
 public class LinkedListCycle {
     public static void main(String[] args) {
         // Test 1: head = [3,2,0,-4], pos = 1
