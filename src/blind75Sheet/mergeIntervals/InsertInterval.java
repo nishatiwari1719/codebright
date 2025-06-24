@@ -36,4 +36,12 @@ public class InsertInterval {
 
         return Arrays.copyOf(result, j);
     }
+
+    /**
+     * Time Complexity : O(n)
+     * As we are iterating through the array only once and 'n' is the number of intervals.
+     *
+     * Space Complexity : O(n)
+     * As we need extra space to store all the newIntervals.
+     */
 }
