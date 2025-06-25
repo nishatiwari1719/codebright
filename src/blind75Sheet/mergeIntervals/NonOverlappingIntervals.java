@@ -2,12 +2,14 @@ package blind75Sheet.mergeIntervals;
 
 import java.util.Arrays;
 
-public class NonOverlapingIntervals {
+public class NonOverlappingIntervals {
     public static void main(String[] args) {
-        int[][] input1 = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-        int[][] input2 = {{1, 4}, {4, 5}};
+        int[][] input1 = {{1, 2}, {2, 3}, {3, 4}, {1, 3}};
+        int[][] input2 = {{1, 2}, {1, 2}, {1, 2}};
+        int[][] input3 = {{1, 2}, {2, 3}};
         System.out.println("input1 = " + eraseOverlapIntervals(input1)); //1
-        System.out.println("input2 = " + eraseOverlapIntervals(input2)); //0
+        System.out.println("input2 = " + eraseOverlapIntervals(input2)); //2
+        System.out.println("input3 = " + eraseOverlapIntervals(input3)); //0
     }
 
     /**
