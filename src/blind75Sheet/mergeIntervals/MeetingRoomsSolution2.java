@@ -26,21 +26,31 @@ public class MeetingRoomsSolution2 {
         System.out.println("input2 {{7, 10}, {2, 4}} = " + canAttendMeetings(input2)); //Output: true
     }
 
+    /**
+     * Determines if a person can attend all meetings without any overlap.
+     *
+     * <p>This function first sorts the intervals by their start times. Then it iterates through the
+     * intervals and checks whether the current meeting starts before the previous one ends.
+     * If it does, then there's an overlap and the function returns false.
+     *
+     * @param intervals a 2D array where each element is an array of size 2 representing start and end time
+     * @return true if no meetings overlap, false otherwise
+     */
     public static boolean canAttendMeetings(int[][] intervals) {
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
-//        Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1])); //We wrote this, but Intellij suggested above one. Why?
+        if (intervals.length == 0) return true;
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+//        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0])); //We wrote this, but Intellij suggested above one. Why?
+
+        // Use a stack to keep track of the previous interval
         Stack<int[]> stack = new Stack<>();
         stack.add(intervals[0]);
 
         for (int i = 1; i < intervals.length; i++) {
             int startTime2 = intervals[i][0];
-//            int endTime2 = intervals[i][1]; //unused var
-
             int[] popArray = stack.pop();
-//            int startTime1 = popArray[0]; //unused var
             int endTime1 = popArray[1];
 
-            if(endTime1 > startTime2) {
+            if (endTime1 > startTime2) {
                 return false;
             }
             stack.add(intervals[i]);
@@ -51,9 +61,13 @@ public class MeetingRoomsSolution2 {
     /**
      * Time Complexity: O(n log n)
      * - Sorting start[] and end[] takes O(n log n) time.
-     * - The while loop runs in O(n) time.
+     * - Iterating through the intervals takes O(n) time.
      * - Overall: O(n log n)
      *
      * Space Complexity: O(n)
+     * Stack may contain up to n intervals in the worst case. Therefore, space complexity is O(n).
+     *
+     * <p>Note: The stack here is unnecessary and could be replaced with a variable to track the previous
+     * interval’s end time for O(1) space solution.
      */
 }
