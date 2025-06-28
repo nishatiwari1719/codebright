@@ -7,6 +7,25 @@ import java.util.Comparator;
  * This class provides a solution to the "Meeting Rooms II" problem.
  * Given an array of meeting time intervals consisting of start and end times,
  * this program calculates the minimum number of conference rooms required.
+ * <p></p>
+ * LeetCode 253: Meeting Rooms II
+ * <p>
+ * Given an array of meeting time intervals {@code intervals} where {@code intervals[i] = [start_i, end_i]},
+ * return the minimum number of conference rooms required.
+ *
+ * <p><b>Example 1:</b><br>
+ * Input: intervals = [[0,30],[5,10],[15,20]]<br>
+ * Output: 2
+ *
+ * <p><b>Example 2:</b><br>
+ * Input: intervals = [[7,10],[2,4]]<br>
+ * Output: 1
+ *
+ * <p><b>Constraints:</b>
+ * <ul>
+ *   <li>1 &le; intervals.length &le; 10<sup>4</sup></li>
+ *   <li>0 &le; start<sub>i</sub> &lt;= end<sub>i</sub> &le; 10<sup>6</sup></li>
+ * </ul>
  */
 public class MeetingRoomsII {
 
