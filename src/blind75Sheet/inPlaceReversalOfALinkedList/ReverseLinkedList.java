@@ -59,10 +59,10 @@ public class ReverseLinkedList {
         ListNode current = head;
 
         while (current != null) {
-            ListNode next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
+            ListNode next = current.next; // Store next node
+            current.next = prev;          // Reverse pointer
+            prev = current;               // Move prev to current
+            current = next;               // Move to next node
         }
 
         return prev;
