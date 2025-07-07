@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * DFS Solution (Cycle Detection using Recursion)
+ */
 public class CourseScheduleDFS {
     List<Integer>[] adj;
     boolean[] visited;
@@ -90,4 +93,16 @@ public class CourseScheduleDFS {
         marked[i] = true; // Mark as completely processed
         return false;
     }
+
+    /**
+     * | Metric              | DFS (Cycle Detection)  | BFS (Kahn’s Algorithm)                     |
+     * | ------------------- | ---------------------- | ------------------------------------------ |
+     * | Time Complexity     | `O(n + p)`             | `O(n + p)`                                 |
+     * | Space Complexity    | `O(n + p)`             | `O(n + p)`                                 |
+     * | Recursion Stack     | `O(n)` (worst case)    | ❌ No recursion                             |
+     * | Suitable for Order? | ❌ No (unless modified) | ✅ Yes (returns topological order in LC210) |
+     * | Detects Cycle?      | ✅ Yes                  | ✅ Yes                                      |
+     *
+     * | Note:               | n = numCourses (nodes) | p = prerequisites.length (edges)            |
+     */
 }
