@@ -2,6 +2,9 @@ package blind75Sheet.breadthFirstSearch;
 
 import java.util.*;
 
+/**
+ * BFS Solution (Topological Sort / Kahn’s Algorithm)
+ */
 public class CourseScheduleBFS {
     List<Integer>[] adj;
     boolean[] visited;
@@ -83,4 +86,15 @@ public class CourseScheduleBFS {
         return processed == numCourses;
     }
 
+    /**
+     * | Metric              | DFS (Cycle Detection)  | BFS (Kahn’s Algorithm)                     |
+     * | ------------------- | ---------------------- | ------------------------------------------ |
+     * | Time Complexity     | `O(n + p)`             | `O(n + p)`                                 |
+     * | Space Complexity    | `O(n + p)`             | `O(n + p)`                                 |
+     * | Recursion Stack     | `O(n)` (worst case)    | ❌ No recursion                             |
+     * | Suitable for Order? | ❌ No (unless modified) | ✅ Yes (returns topological order in LC210) |
+     * | Detects Cycle?      | ✅ Yes                  | ✅ Yes                                      |
+     *
+     * | Note:               | n = numCourses (nodes) | p = prerequisites.length (edges)            |
+     */
 }
