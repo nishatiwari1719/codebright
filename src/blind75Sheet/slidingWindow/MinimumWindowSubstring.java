@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class MinimumWindowSubstring {
     public static void main(String[] args) {
-        System.out.println("ADOBECODEBANC, ABC = " + minWindow("ADOBECODEBANC", "ABC")); //"BANC"
-        System.out.println("a, a = " + minWindow("a", "a")); //"a"
-        System.out.println("a, aa = " + minWindow("a", "aa")); //""
+        MinimumWindowSubstring obj = new MinimumWindowSubstring();
+
+        System.out.println("ADOBECODEBANC, ABC = " + obj.minWindow("ADOBECODEBANC", "ABC")); //"BANC"
+        System.out.println("a, a = " + obj.minWindow("a", "a")); //"a"
+        System.out.println("a, aa = " + obj.minWindow("a", "aa")); //""
     }
 
     /**
@@ -17,7 +19,7 @@ public class MinimumWindowSubstring {
      * @param t The target string with characters to match.
      * @return The smallest substring of 's' containing all characters from 't'.
      */
-    public static String minWindow(String s, String t) {
+    public String minWindow(String s, String t) {
         // If source string is smaller than target, no window is possible
         if (s.length() < t.length()) {
             return "";

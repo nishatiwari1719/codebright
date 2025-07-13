@@ -4,12 +4,14 @@ import java.util.Arrays;
 
 public class NonOverlappingIntervals {
     public static void main(String[] args) {
+        NonOverlappingIntervals obj = new NonOverlappingIntervals();
+
         int[][] input1 = {{1, 2}, {2, 3}, {3, 4}, {1, 3}};
         int[][] input2 = {{1, 2}, {1, 2}, {1, 2}};
         int[][] input3 = {{1, 2}, {2, 3}};
-        System.out.println("input1 = " + eraseOverlapIntervals(input1)); //1
-        System.out.println("input2 = " + eraseOverlapIntervals(input2)); //2
-        System.out.println("input3 = " + eraseOverlapIntervals(input3)); //0
+        System.out.println("input1 = " + obj.eraseOverlapIntervals(input1)); //1
+        System.out.println("input2 = " + obj.eraseOverlapIntervals(input2)); //2
+        System.out.println("input3 = " + obj.eraseOverlapIntervals(input3)); //0
     }
 
     /**
@@ -28,7 +30,7 @@ public class NonOverlappingIntervals {
      * @param intervals
      * @return the int count of intervals to remove
      */
-    public static int eraseOverlapIntervals(int[][] intervals) {
+    public int eraseOverlapIntervals(int[][] intervals) {
         int n = intervals.length;
 
         // Sort the intervals based on the end time

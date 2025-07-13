@@ -1,16 +1,16 @@
-package blind75Sheet.inPlaceReversalOfALinkedList;
+package blind75Sheet.utils.inPlaceReversalOfALinkedList;
 
 /**
  * Definition for singly-linked list.
  */
 public class ListNode {
     int val;
-    ListNode next;
+    public ListNode next;
 
     ListNode() {
     }
 
-    ListNode(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 

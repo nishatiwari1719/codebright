@@ -4,15 +4,17 @@ import java.util.Arrays;
 
 public class InsertInterval {
     public static void main(String[] args) {
+        InsertInterval obj = new InsertInterval();
+
         int[][] input1 = {{1, 3}, {6, 9}};
         int[] newInterval1 = {2, 5};
         int[][] input2 = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
         int[] newInterval2 = {4, 8};
-        System.out.println("input1 = " + Arrays.deepToString(insert(input1, newInterval1))); //[[1, 5], [6, 9]]
-        System.out.println("input2 = " + Arrays.deepToString(insert(input2, newInterval2))); //[[1, 2], [3, 10], [12, 16]]
+        System.out.println("input1 = " + Arrays.deepToString(obj.insert(input1, newInterval1))); //[[1, 5], [6, 9]]
+        System.out.println("input2 = " + Arrays.deepToString(obj.insert(input2, newInterval2))); //[[1, 2], [3, 10], [12, 16]]
     }
 
-    public static int[][] insert(int[][] intervals, int[] newInterval) {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
         int[][] result = new int[intervals.length + 1][2];
         int i = 0, j = 0;
 

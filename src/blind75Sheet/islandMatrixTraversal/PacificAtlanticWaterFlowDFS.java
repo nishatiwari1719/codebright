@@ -13,6 +13,7 @@ public class PacificAtlanticWaterFlowDFS {
     private static final int[][] dir = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
     public static void main(String[] args) {
+        PacificAtlanticWaterFlowDFS obj = new PacificAtlanticWaterFlowDFS();
         int[][] input1 = {
                 {1, 2, 2, 3, 5},
                 {3, 2, 3, 4, 4},
@@ -20,7 +21,7 @@ public class PacificAtlanticWaterFlowDFS {
                 {6, 7, 1, 4, 5},
                 {5, 1, 1, 2, 4}
         };
-        List<List<Integer>> result = pacificAtlantic(input1); //[0, 4],[1, 3],[1, 4],[2, 2],[3, 0],[3, 1],[4, 0]
+        List<List<Integer>> result = obj.pacificAtlantic(input1); //[0, 4],[1, 3],[1, 4],[2, 2],[3, 0],[3, 1],[4, 0]
         for (List<Integer> r : result) {
             System.out.println(r);
         }
@@ -32,7 +33,7 @@ public class PacificAtlanticWaterFlowDFS {
      * @param matrix The height matrix of the land.
      * @return A list of coordinates where water can flow to both oceans.
      */
-    private static List<List<Integer>> pacificAtlantic(int[][] matrix) {
+    private List<List<Integer>> pacificAtlantic(int[][] matrix) {
         List<List<Integer>> res = new ArrayList<>();
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return res;
@@ -78,7 +79,7 @@ public class PacificAtlanticWaterFlowDFS {
      * @param x       Current cell row index.
      * @param y       Current cell column index.
      */
-    private static void dfs(int[][] matrix, boolean[][] visited, int height, int x, int y) {
+    private void dfs(int[][] matrix, boolean[][] visited, int height, int x, int y) {
         int n = matrix.length, m = matrix[0].length;
 
         // Out of bounds or already visited or current cell is lower than previous height

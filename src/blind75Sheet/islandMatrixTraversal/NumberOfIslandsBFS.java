@@ -5,6 +5,8 @@ import java.util.Queue;
 
 public class NumberOfIslandsBFS {
     public static void main(String[] args) {
+        NumberOfIslandsBFS obj = new NumberOfIslandsBFS();
+
         char[][] input1 = {
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
@@ -17,11 +19,11 @@ public class NumberOfIslandsBFS {
                 {'0', '0', '1', '0', '0'},
                 {'0', '0', '0', '1', '1'}
         };
-        System.out.println("input1 = " + numIslandsBFS(input1)); //1
-        System.out.println("input2 = " + numIslandsBFS(input2)); //3
+        System.out.println("input1 = " + obj.numIslandsBFS(input1)); //1
+        System.out.println("input2 = " + obj.numIslandsBFS(input2)); //3
     }
 
-    private static int numIslandsBFS(char[][] grid) {
+    private int numIslandsBFS(char[][] grid) {
         if (grid == null || grid.length == 0) return 0;
 
         int rows = grid.length;
@@ -40,7 +42,7 @@ public class NumberOfIslandsBFS {
         return islands;
     }
 
-    private static void bfs(char[][] grid, int r, int c, int[][] directions) {
+    private void bfs(char[][] grid, int r, int c, int[][] directions) {
         int rows = grid.length;
         int cols = grid[0].length;
         Queue<int[]> queue = new LinkedList<>();

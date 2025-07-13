@@ -19,10 +19,12 @@ import java.util.Comparator;
 public class MeetingRoomsSolution1 {
 
     public static void main(String[] args) {
+        MeetingRoomsSolution1 obj = new MeetingRoomsSolution1();
+
         int[][] input1 = {{0, 30}, {5, 10}, {15, 20}};
         int[][] input2 = {{7, 10}, {2, 4}};
-        System.out.println("input1 {{0, 30}, {5, 10}, {15, 20}} = " + canAttendMeetings(input1)); //Output: false
-        System.out.println("input2 {{7, 10}, {2, 4}} = " + canAttendMeetings(input2)); //Output: true
+        System.out.println("input1 {{0, 30}, {5, 10}, {15, 20}} = " + obj.canAttendMeetings(input1)); //Output: false
+        System.out.println("input2 {{7, 10}, {2, 4}} = " + obj.canAttendMeetings(input2)); //Output: true
     }
 
     /**
@@ -38,7 +40,7 @@ public class MeetingRoomsSolution1 {
      * @return true if a person can attend all meetings without conflicts; false otherwise.
      * @return true if all the meetings can be attended, false otherwise.
      */
-    public static boolean canAttendMeetings(int[][] intervals) {
+    public boolean canAttendMeetings(int[][] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 //        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0])); //We wrote this, but Intellij suggested above one. Why?
 
