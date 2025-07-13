@@ -50,6 +50,7 @@ public class ReverseLinkedList {
 
     /**
      * Reverses a singly linked list in-place.
+     * Uses "Three Pointers" approach. The three pointers are: current, next, prev.
      *
      * @param head The head of the singly linked list.
      * @return The new head of the reversed linked list.
