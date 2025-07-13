@@ -1,18 +1,22 @@
 package blind75Sheet.inPlaceReversalOfALinkedList;
 
 
+import blind75Sheet.utils.inPlaceReversalOfALinkedList.ListNode;
+
 public class ReverseLinkedList {
     public static void main(String[] args) {
+        ReverseLinkedList obj = new ReverseLinkedList();
+
         // Test 1: head = [1,2,3,4,5]
-        ListNode head1 = createList(new int[]{1, 2, 3, 4, 5}, -1);
+        ListNode head1 = obj.createList(new int[]{1, 2, 3, 4, 5}, -1);
         System.out.print("Test 1: [1,2,3,4,5] → " + reverseList(head1)); // Output : [5, 4, 3, 2, 1]
 
         // Test 2: head = [1,2]
-        ListNode head2 = createList(new int[]{1, 2}, -1);
+        ListNode head2 = obj.createList(new int[]{1, 2}, -1);
         System.out.print("\nTest 2: [1,2] → " + reverseList(head2)); // Output : [2, 1]
 
         // Test 3: head = []
-        ListNode head3 = createList(new int[]{}, -1);
+        ListNode head3 = obj.createList(new int[]{}, -1);
         System.out.print("\nTest 3: [] → " + (reverseList(head3) == null ? "[]" : reverseList(head3))); // Output : []
     }
 
@@ -26,7 +30,7 @@ public class ReverseLinkedList {
      * @param pos
      * @return ListNode
      */
-    public static ListNode createList(int[] values, int pos) {
+    public ListNode createList(int[] values, int pos) {
         if (values == null || values.length == 0) return null;
 
         ListNode head = new ListNode(values[0]);
@@ -50,6 +54,7 @@ public class ReverseLinkedList {
 
     /**
      * Reverses a singly linked list in-place.
+     * Uses "Three Pointers" approach. The three pointers are: current, next, prev.
      *
      * @param head The head of the singly linked list.
      * @return The new head of the reversed linked list.

@@ -30,10 +30,12 @@ import java.util.Comparator;
 public class MeetingRoomsII {
 
     public static void main(String[] args) {
+        MeetingRoomsII obj = new MeetingRoomsII();
+
         int[][] input1 = {{0, 30}, {5, 10}, {15, 20}};
         int[][] input2 = {{7, 10}, {2, 4}};
-        System.out.println("input1 = " + minMeetingRooms(input1)); //Output: 2
-        System.out.println("input2 = " + minMeetingRooms(input2)); //Output: 1
+        System.out.println("input1 = " + obj.minMeetingRooms(input1)); //Output: 2
+        System.out.println("input2 = " + obj.minMeetingRooms(input2)); //Output: 1
     }
 
     /**
@@ -50,7 +52,7 @@ public class MeetingRoomsII {
      * - If the current meeting starts after or when another meeting ends, reuse the room.
      * - Otherwise, a new room is needed.
      */
-    public static int minMeetingRooms(int[][] intervals) {
+    public int minMeetingRooms(int[][] intervals) {
         if (intervals.length == 0) {
             return 0;
         }

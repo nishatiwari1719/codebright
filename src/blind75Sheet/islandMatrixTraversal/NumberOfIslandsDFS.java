@@ -2,6 +2,8 @@ package blind75Sheet.islandMatrixTraversal;
 
 public class NumberOfIslandsDFS {
     public static void main(String[] args) {
+        NumberOfIslandsDFS obj = new NumberOfIslandsDFS();
+
         char[][] input1 = {
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
@@ -14,11 +16,11 @@ public class NumberOfIslandsDFS {
                 {'0', '0', '1', '0', '0'},
                 {'0', '0', '0', '1', '1'}
         };
-        System.out.println("input1 = " + numIslands(input1)); //1
-        System.out.println("input2 = " + numIslands(input2)); //3
+        System.out.println("input1 = " + obj.numIslands(input1)); //1
+        System.out.println("input2 = " + obj.numIslands(input2)); //3
     }
 
-    public static int numIslands(char[][] grid) {
+    public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0)
             return 0;
 
@@ -36,7 +38,7 @@ public class NumberOfIslandsDFS {
         return count;
     }
 
-    private static void dfs(char[][] grid, int i, int j) {
+    private void dfs(char[][] grid, int i, int j) {
         if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0')
             return;
 

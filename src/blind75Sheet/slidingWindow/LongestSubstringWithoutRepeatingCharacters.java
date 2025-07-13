@@ -25,32 +25,23 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * <p><b>Time Complexity:</b> O(n), where n is the length of the string.</p>
      * <p><b>Space Complexity:</b> O(1), assuming the character set is of fixed size (e.g., ASCII).</p>
      */
-//    public int lengthOfLongestSubstring(String s) {
-//        // TC = O(n), SC = O(1)
-//        int n = s.length();
-//        int maxLength = 0;
-//        Map<Character, Integer> charMap = new HashMap<>();
-//        int left = 0;
-//
-//        for (int right = 0; right < n; right++) {
-//            if (!charMap.containsKey(s.charAt(right)) || charMap.get(s.charAt(right)) < left) {
-//                charMap.put(s.charAt(right), right);
-//                maxLength = Math.max(maxLength, right - left + 1);
-//            }
-//            /**
-//             * This first line inside else block is executed when we encounter a repeating character that is inside
-//             * the current sliding window.
-//             * It moves the left pointer just after the last index of the repeated character.
-//             * This ensures: The new window starts after the previous occurrence of the repeating character.
-//             * So the new window contains only unique characters again.
-//             */
-//            else {
-//                left = charMap.get(s.charAt(right)) + 1;
-//                charMap.put(s.charAt(right), right);
-//            }
-//        }
-//        return maxLength;
-//    }
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int maxLength = 0;
+        Map<Character, Integer> charMap = new HashMap<>();
+        int left = 0;
+
+        for (int right = 0; right < n; right++) {
+            if (!charMap.containsKey(s.charAt(right)) || charMap.get(s.charAt(right)) < left) {
+                charMap.put(s.charAt(right), right);
+                maxLength = Math.max(maxLength, right - left + 1);
+            } else {
+                left = charMap.get(s.charAt(right)) + 1;
+                charMap.put(s.charAt(right), right);
+            }
+        }
+        return maxLength;
+    }
 
 //    ------------------------------------------------------------------------------------------------------------------
 //    Second Best/Alternate Optimised approach:
@@ -99,20 +90,20 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * <p><b>Space Complexity:</b> O(min(n, m)), where m is the size of the character set
      * (e.g., 26 for lowercase English letters).</p>
      */
-    public int lengthOfLongestSubstring(String s) {
-        int maxLength = 0;
-        for (int i = 0; i < s.length(); i++) {
-            Set<Character> seen = new HashSet<>();
-            for (int j = i; j < s.length(); j++) {
-                if (seen.contains(s.charAt(j))) {
-                    break;
-                }
-                seen.add(s.charAt(j));
-                maxLength = Math.max(maxLength, j - i + 1);
-            }
-        }
-        return maxLength;
-    }
+//    public int lengthOfLongestSubstring(String s) {
+//        int maxLength = 0;
+//        for (int i = 0; i < s.length(); i++) {
+//            Set<Character> seen = new HashSet<>();
+//            for (int j = i; j < s.length(); j++) {
+//                if (seen.contains(s.charAt(j))) {
+//                    break;
+//                }
+//                seen.add(s.charAt(j));
+//                maxLength = Math.max(maxLength, j - i + 1);
+//            }
+//        }
+//        return maxLength;
+//    }
 
 
 }

@@ -10,10 +10,12 @@ import java.util.List;
 public class MergeIntervals {
 
     public static void main(String[] args) {
+        MergeIntervals obj = new MergeIntervals();
+
         int[][] input1 = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
         int[][] input2 = {{1, 4}, {4, 5}};
-        System.out.println("input1 = " + Arrays.deepToString(merge(input1))); //[[1, 6], [8, 10], [15, 18]]
-        System.out.println("input2 = " + Arrays.deepToString(merge(input2))); //[[1, 5]]
+        System.out.println("input1 = " + Arrays.deepToString(obj.merge(input1))); //[[1, 6], [8, 10], [15, 18]]
+        System.out.println("input2 = " + Arrays.deepToString(obj.merge(input2))); //[[1, 5]]
     }
 
     /**
@@ -22,7 +24,7 @@ public class MergeIntervals {
      * @param intervals A 2D array where each element is an interval represented as [start, end].
      * @return A 2D array of merged non-overlapping intervals.
      */
-    public static int[][] merge(int[][] intervals) {
+    public int[][] merge(int[][] intervals) {
         if (intervals.length <= 1) {
             return intervals;
         }

@@ -2,12 +2,13 @@ package blind75Sheet.slidingWindow;
 
 public class LongestRepeatingCharacterReplacement {
     public static void main(String[] args) {
-        System.out.println("ABAB = " + characterReplacement("ABAB", 2)); //4
-        System.out.println("AABABBA = " + characterReplacement("AABABBA", 1)); //4
-        System.out.println("ABAA = " + characterReplacement("ABAA", 0)); //2
+        LongestRepeatingCharacterReplacement obj = new LongestRepeatingCharacterReplacement();
+        System.out.println("ABAB = " + obj.characterReplacement("ABAB", 2)); //4
+        System.out.println("AABABBA = " + obj.characterReplacement("AABABBA", 1)); //4
+        System.out.println("ABAA = " + obj.characterReplacement("ABAA", 0)); //2
     }
 
-    public static int characterReplacement(String s, int k) {
+    public int characterReplacement(String s, int k) {
         int[] freq = new int[26];
         int left = 0;
         int maxFreq = 0;
