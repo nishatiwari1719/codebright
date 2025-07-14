@@ -7,6 +7,7 @@ public class MinimumWindowSubstring {
     public static void main(String[] args) {
         MinimumWindowSubstring obj = new MinimumWindowSubstring();
 
+        System.out.println("ADEBANC, ABC = " + obj.minWindow("ADEBANC", "ABC")); //"BANC"
         System.out.println("ADOBECODEBANC, ABC = " + obj.minWindow("ADOBECODEBANC", "ABC")); //"BANC"
         System.out.println("a, a = " + obj.minWindow("a", "a")); //"a"
         System.out.println("a, aa = " + obj.minWindow("a", "aa")); //""
@@ -81,13 +82,14 @@ public class MinimumWindowSubstring {
     }
 
     /**
-     * TIME and SPACE COMPLEXITY => O(n) and O(1) respectively.
+     * TIME and SPACE COMPLEXITY => O(m + n) and O(1) respectively.
+     * m = s.length(), n = t.length()
      *
      * Why TC is O(n)?
-     * Each character is processed at most once when entering the window (endIndex pointer) and once when leaving the window
-     * (startIndex pointer).
-     * All operations inside the loop (like map.put, map.getOrDefault, comparisons) are O(1).
-     * So total work done is proportional to O(n), not O(n²).
+     * We iterate over 't' once to build the frequency map → O(n).
+     * We iterate over 's' using sliding window with two pointers (startIndex and endIndex) each moving at most
+     * m times → O(m).
+     * Hence, total time = O(m + n).
      *
      * Why SC is O(1)?
      * We use a Map<Character, Integer> called charCount. The map stores only characters, and in the worst case it holds:
