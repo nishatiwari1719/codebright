@@ -3,9 +3,9 @@ package blind75Sheet.slidingWindow;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MinimumWindowSubstring {
+public class MinimumWindowSubstringMap {
     public static void main(String[] args) {
-        MinimumWindowSubstring obj = new MinimumWindowSubstring();
+        MinimumWindowSubstringMap obj = new MinimumWindowSubstringMap();
 
         System.out.println("ADEBANC, ABC = " + obj.minWindow("ADEBANC", "ABC")); //"BANC"
         System.out.println("ADOBECODEBANC, ABC = " + obj.minWindow("ADOBECODEBANC", "ABC")); //"BANC"
@@ -85,7 +85,7 @@ public class MinimumWindowSubstring {
      * TIME and SPACE COMPLEXITY => O(m + n) and O(1) respectively.
      * m = s.length(), n = t.length()
      *
-     * Why TC is O(n)?
+     * Why TC is O(m + n)?
      * We iterate over 't' once to build the frequency map → O(n).
      * We iterate over 's' using sliding window with two pointers (startIndex and endIndex) each moving at most
      * m times → O(m).
@@ -98,7 +98,7 @@ public class MinimumWindowSubstring {
      * (e.g., ASCII has 128 chars, Extended ASCII has 256, Unicode range is also finite), we treat it as O(1) in practice.
      *
      * So yes:
-     * Time complexity: O(n)
+     * Time complexity: O(m + n)
      * Space complexity: O(1) (assuming character set size is bounded)
      *
      */
