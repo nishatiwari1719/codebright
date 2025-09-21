@@ -23,61 +23,50 @@ public class MinimumWindowSubstringFrequencyArray {
      * returns an empty string if no such window exists
      */
     public String minWindow(String s, String t) {
-        // If source string is smaller than target, no window is possible
         if (s.length() < t.length()) {
             return "";
         }
-
-        int[] count = new int[128]; // Frequency array for ASCII characters
-
-        // Initialize frequency array based on characters in t
+        int[] count = new int[128];
         for (char ch : t.toCharArray()) {
             count[ch]++;
         }
-
         int left = 0; // Left pointer of the sliding window
-        int minStart = 0; // Start index of the minimum window
-        int minLen = Integer.MAX_VALUE; // Length of the minimum window
+        int[] minWindow = {0, Integer.MAX_VALUE}; // Length of the minimum window
         int targetCharsRemaining = t.length(); // Total number of target characters to match
-
         for (int right = 0; right < s.length(); right++) {
             char rChar = s.charAt(right);
-
-            // If this character is needed (its count > 0), it contributes to matching
+            // If the character is in the target and needed, reduce the count of remaining characters
             if (count[rChar] > 0) {
                 targetCharsRemaining--;
             }
-
-            // Decrease count (whether needed or extra, to track window state)
+            // Decrease frequency of character (even if it's not in target — for balancing when shrinking window)
             count[rChar]--;
-
-            // Once all characters are matched
+            // When all target characters have been matched in the window
             if (targetCharsRemaining == 0) {
-                // Try to shrink window from the left
+                // Try to shrink the window from the left as much as possible
                 while (true) {
                     char lChar = s.charAt(left);
+                    // If character is needed and its count is zero, we can't remove it
                     if (count[lChar] == 0) {
-                        break; // Can't remove this char, it's needed
+                        break;
                     }
-                    count[lChar]++; // Give back unused/extra character
+                    // Else increase its count and move the left forward
+                    count[lChar]++;
                     left++;
                 }
-
-                // Update minimum window
-                if (right - left + 1 < minLen) {
-                    minStart = left;
-                    minLen = right - left + 1;
+                // Update minimum window if current one is smaller
+                if (right - left < minWindow[1] - minWindow[0]) {
+                    minWindow[0] = left;
+                    minWindow[1] = right;
                 }
-
-                // Move left pointer to look for next valid window
-                count[s.charAt(left)]++; // This character is no longer part of the window
-                targetCharsRemaining++; // We need this char again
+                // Move left pointer to look for next smaller valid window
+                count[s.charAt(left)]++;
+                targetCharsRemaining++;
                 left++;
             }
         }
-
-        // Return the result based on whether we found a valid window
-        return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+        // If no valid window was found, return empty string
+        return minWindow[1] >= s.length() ? "" : s.substring(minWindow[0], minWindow[1] + 1);
     }
 
     /**
