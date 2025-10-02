@@ -21,7 +21,7 @@ public class PacificAtlanticWaterFlowBFS {
                 {6, 7, 1, 4, 5},
                 {5, 1, 1, 2, 4}
         };
-        List<List<Integer>> result = obj.pacificAtlantic(input1);
+        List<List<Integer>> result = obj.pacificAtlantic(input1); //[0, 4],[1, 3],[1, 4],[2, 2],[3, 0],[3, 1],[4, 0]
         for (List<Integer> r : result) {
             System.out.println(r);
         }
@@ -55,11 +55,11 @@ public class PacificAtlanticWaterFlowBFS {
             pacific[i][0] = true;
             atlantic[i][m - 1] = true;
         }
-        for (int i = 0; i < m; i++) { //Horizontal border
-            pQueue.offer(new int[]{0, i});               // Pacific - Top row
-            aQueue.offer(new int[]{n - 1, i});           // Atlantic - Bottom row
-            pacific[0][i] = true;
-            atlantic[n - 1][i] = true;
+        for (int j = 0; j < m; j++) { //Horizontal border
+            pQueue.offer(new int[]{0, j});               // Pacific - Top row
+            aQueue.offer(new int[]{n - 1, j});           // Atlantic - Bottom row
+            pacific[0][j] = true;
+            atlantic[n - 1][j] = true;
         }
 
         // BFS from each ocean's border
