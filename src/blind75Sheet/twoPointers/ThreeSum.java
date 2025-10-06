@@ -32,31 +32,33 @@ public class ThreeSum {
         Arrays.sort(nums);
 
         // Iterate through the array fixing one number at a time
-        for (int i = 0; i < nums.length; i++) {
-            // Skip duplicate values for i to avoid repeating the same triplet
+        for (int i = 0; i < nums.length - 2; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
 
-            int j = i + 1;               // Left pointer
-            int k = nums.length - 1;     // Right pointer
+            int j = i + 1;
+            int k = nums.length - 1;
 
-            // Use two pointers to find two numbers such that their sum with nums[i] is zero
             while (j < k) {
                 int total = nums[i] + nums[j] + nums[k];
                 if (total > 0) {
-                    k--; // Sum too large, move right pointer to left
+                    k--;
                 } else if (total < 0) {
-                    j++; // Sum too small, move left pointer to right
-                } else {
-                    // Found a valid triplet
-                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
                     j++;
+                } else {
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
 
-                    // Skip duplicates for j to avoid repeating the same triplet
-                    while (nums[j] == nums[j - 1] && j < k) {
+                    while (j < k && nums[j] == nums[j + 1]) {
                         j++;
                     }
+
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+
+                    j++;
+                    k--;
                 }
             }
         }
