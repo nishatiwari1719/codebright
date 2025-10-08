@@ -1,13 +1,13 @@
-package blind75Sheet.fastAndSlowPointers;
+package blind75Sheet.utils.fastAndSlowPointers;
 
 /**
  * Definition for singly-linked list.
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
         next = null;
     }

@@ -1,5 +1,9 @@
 package blind75Sheet.fastAndSlowPointers;
 
+import blind75Sheet.utils.fastAndSlowPointers.ListNode;
+
+import static blind75Sheet.utils.fastAndSlowPointers.ListUtils.createList;
+
 public class LinkedListCycle {
     public static void main(String[] args) {
         // Test 1: head = [3,2,0,-4], pos = 1
@@ -18,13 +22,13 @@ public class LinkedListCycle {
     /**
      * This program detects a cycle in a singly linked list using the Floyd’s Cycle Detection Algorithm
      * (also known as the Tortoise and Hare Algorithm).
-     *
+     * <p>
      * Use two pointers, walker and runner.
      * Walker moves step by step. runner moves two steps at time.
-     * If the Linked List has a cycle walker and runner will meet at some point.
-     *
+     * If the Linked List has a cycle, walker and runner will meet at some point.
+     * <p>
      * TC = O(n), SC = O(1)
-     *
+     * <p>
      * PS: Doesn’t detect where the cycle starts — only whether a cycle exists.
      *
      * @param head
@@ -45,38 +49,6 @@ public class LinkedListCycle {
         }
         return false;
     }
-
-    /**
-     * Create list with cycle at position 'pos'.
-     * 
-     * This method is not a part of the solution.
-     * It is only used for preparing test cases.
-     *
-     * @param values
-     * @param pos
-     * @return ListNode
-     */
-    public static ListNode createList(int[] values, int pos) {
-        if (values == null || values.length == 0) return null;
-
-        ListNode head = new ListNode(values[0]);
-        ListNode current = head;
-        ListNode cycleEntry = null;
-
-        if (pos == 0) cycleEntry = head;
-
-        for (int i = 1; i < values.length; i++) {
-            current.next = new ListNode(values[i]);
-            current = current.next;
-            if (i == pos) cycleEntry = current;
-        }
-
-        if (pos != -1) {
-            current.next = cycleEntry;  // Create cycle
-        }
-
-        return head;
-    }
 }
 
 /**
@@ -85,11 +57,11 @@ public class LinkedListCycle {
  * Worst-case: The runner and walker traverse at most n nodes before meeting or terminating.
  * Time Complexity = O(n)
  * where n is the number of nodes in the linked list.
- *
+ * <p>
  * Space Complexity
  * Only two pointers (walker and runner) are used.
  * Space Complexity = O(1) (constant space, in-place)
- *
+ * <p>
  * | Aspect                 | Details                                          |
  * | ---------------------- | ------------------------------------------------ |
  * | **Algorithm Used**     | Floyd's Cycle Detection                          |
