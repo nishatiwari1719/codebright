@@ -1,5 +1,9 @@
 package blind75Sheet.fastAndSlowPointers;
 
+import blind75Sheet.utils.fastAndSlowPointers.ListNode;
+
+import static blind75Sheet.utils.fastAndSlowPointers.ListUtils.createList;
+
 public class RemoveNthNodeFromEndOfList {
     public static void main(String[] args) {
         // Test 1: head = [1,2,3,4,5], n = 2
@@ -13,38 +17,6 @@ public class RemoveNthNodeFromEndOfList {
         // Test 3: head = [1,2], n = 1
         ListNode head3 = createList(new int[]{1, 2}, -1);
         System.out.println("Test 3: [1,2], n = 1 → " + removeNthFromEnd(head3, 1)); //[1]
-    }
-
-    /**
-     * Create list with cycle at position 'pos'.
-     * <p>
-     * This method is not a part of the solution.
-     * It is only used for preparing test cases.
-     *
-     * @param values
-     * @param pos
-     * @return ListNode
-     */
-    public static ListNode createList(int[] values, int pos) {
-        if (values == null || values.length == 0) return null;
-
-        ListNode head = new ListNode(values[0]);
-        ListNode current = head;
-        ListNode cycleEntry = null;
-
-        if (pos == 0) cycleEntry = head;
-
-        for (int i = 1; i < values.length; i++) {
-            current.next = new ListNode(values[i]);
-            current = current.next;
-            if (i == pos) cycleEntry = current;
-        }
-
-        if (pos != -1) {
-            current.next = cycleEntry;  // Create cycle
-        }
-
-        return head;
     }
 
     /**
