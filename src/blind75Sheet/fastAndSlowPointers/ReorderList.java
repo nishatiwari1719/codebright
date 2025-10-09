@@ -39,55 +39,55 @@ public class ReorderList {
          * Find the middle of the list.
          *
          * This uses the slow and fast pointer technique:
-         * p1 moves one step at a time (slow pointer).
-         * p2 moves two steps at a time (fast pointer).
+         * slowPointer moves one step at a time (slow pointer).
+         * fastPointer moves two steps at a time (fast pointer).
          *
-         * When p2 reaches the end, p1 will be at the middle of the list.
+         * When fastPointer reaches the end, slowPointer will be at the middle of the list.
          */
-        ListNode p1 = head;
-        ListNode p2 = head;
-        while (p2.next != null && p2.next.next != null) {
-            p1 = p1.next;
-            p2 = p2.next.next;
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+        while (fastPointer.next != null && fastPointer.next.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
         }
 
         /**
          * Reverse the half after middle.
          *
-         * This reverses the second half in-place, starting after the middle node (preMiddle).
+         * This reverses the second half in-place, starting after the middle node (middleNode).
          *
          * Example:
          * Original second half: 4 → 5 → null
          * After reversal: 5 → 4 → null
          *
-         * This part re-links nodes by inserting the current node at the front of the second half repeatedly,
+         * This part re-links nodes by inserting the tempNode node at the front of the second half repeatedly,
          * giving the reverse effect.
          */
-        ListNode preMiddle = p1;
-        ListNode preCurrent = p1.next;
-        while (preCurrent.next != null) {
-            ListNode current = preCurrent.next;
-            preCurrent.next = current.next;
-            current.next = preMiddle.next;
-            preMiddle.next = current;
+        ListNode middleNode = slowPointer;
+        ListNode currentNode = slowPointer.next;
+        while (currentNode.next != null) {
+            ListNode tempNode = currentNode.next;
+            currentNode.next = tempNode.next;
+            tempNode.next = middleNode.next;
+            middleNode.next = tempNode;
         }
 
         /**
          * Reorder the List.
          *
          * This merges the first half and reversed second half alternately:
-         * Think of p1 as moving from the front.
-         * Think of p2 as picking the next node from the reversed second half.
+         * Think of slowPointer as moving from the front.
+         * Think of fastPointer as picking the next node from the reversed second half.
          * Nodes are inserted one-by-one between original nodes to achieve L0 → Ln → L1 → Ln-1 → ....
          */
-        p1 = head;
-        p2 = preMiddle.next;
-        while (p1 != preMiddle) {
-            preMiddle.next = p2.next;
-            p2.next = p1.next;
-            p1.next = p2;
-            p1 = p2.next;
-            p2 = preMiddle.next;
+        slowPointer = head;
+        fastPointer = middleNode.next;
+        while (slowPointer != middleNode) {
+            middleNode.next = fastPointer.next;
+            fastPointer.next = slowPointer.next;
+            slowPointer.next = fastPointer;
+            slowPointer = fastPointer.next;
+            fastPointer = middleNode.next;
         }
 
         /**
@@ -102,6 +102,6 @@ public class ReorderList {
      * Space Complexity: O(1)
      * No additional data structures like arrays, stacks, or queues are used.
      * All pointer manipulations are done in-place.
-     * Only a constant number of pointers (p1, p2, preMiddle, preCurrent, current) are used.
+     * Only a constant number of pointers (slowPointer, fastPointer, middleNode, currentNode, tempNode) are used.
      */
 }
