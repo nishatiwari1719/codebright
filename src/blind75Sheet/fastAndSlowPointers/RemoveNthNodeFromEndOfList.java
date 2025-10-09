@@ -17,6 +17,10 @@ public class RemoveNthNodeFromEndOfList {
         // Test 3: head = [1,2], n = 1
         ListNode head3 = createList(new int[]{1, 2}, -1);
         System.out.println("Test 3: [1,2], n = 1 → " + removeNthFromEnd(head3, 1)); //[1]
+
+        // Test 3: head = [1,2], n = 2 => To remove the head node
+        ListNode head4 = createList(new int[]{1, 2}, -1);
+        System.out.println("Test 3: [1,2], n = 2 → " + removeNthFromEnd(head4, 2)); //[2]
     }
 
     /**
