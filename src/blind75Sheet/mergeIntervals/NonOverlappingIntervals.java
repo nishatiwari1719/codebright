@@ -34,9 +34,10 @@ public class NonOverlappingIntervals {
         int n = intervals.length;
 
         // Sort the intervals based on the end time
-        // Two approaches to sort based on end time:
+        // Approaches to sort based on end time:
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1])); // This is faster as per performance.
 //        Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
+//        Arrays.sort(intervals, (a,b) -> a[1] - b[1]);
 
         // end time of the first/current interval
         int prev = 0;
