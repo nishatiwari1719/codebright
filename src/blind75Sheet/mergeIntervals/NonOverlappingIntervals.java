@@ -31,6 +31,10 @@ public class NonOverlappingIntervals {
      * @return the int count of intervals to remove
      */
     public int eraseOverlapIntervals(int[][] intervals) {
+        if(intervals.length == 0) {
+            return 0;
+        }
+
         int n = intervals.length;
 
         // Sort the intervals based on the end time
