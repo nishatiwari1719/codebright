@@ -10,6 +10,7 @@ public class MissingNumber {
 
     /**
      * Finds the missing number in an array using the mathematical formula.
+     * Another approach is Cyclic Sort, but for this question it is unnecessarily complex. Hence, not used.
      * <p>
      * The sum of the first n natural numbers is n * (n + 1) / 2.
      * The missing number is the difference between the expected sum and the actual sum of the array.
@@ -58,4 +59,13 @@ public class MissingNumber {
 //        return n;
 //    }
 // Or we can break from the if inside the loop and return i after the loop.
+
+//    Comparison between Sum Solution and Cyclic Sort Solution (not used here)
+//| Criteria                      | Sum Formula (this solution)                                | Cyclic Sort                                                       |
+//| ----------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- |
+//| **Time Complexity**           | O(n)                                                       | O(n)                                                              |
+//| **Space Complexity**          | O(1)                                                       | O(1)                                                              |
+//| **Implementation Complexity** | ✅ Very simple (few lines)                                  | ❌ Slightly complex (requires swaps & careful indexing)            |
+//| **When to Use**               | When only one number is missing and range is 0–n           | When multiple numbers might be misplaced or you also need sorting |
+//| **Drawback**                  | Doesn’t give extra info (like which numbers are misplaced) | More versatile but overkill for just one missing value            |
 }
