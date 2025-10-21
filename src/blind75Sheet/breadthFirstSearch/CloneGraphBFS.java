@@ -70,10 +70,13 @@ public class CloneGraphBFS {
         map.put(node, new Node(node.val));
 
         while (!queue.isEmpty()) {
-            Node newNode = queue.poll();
+            Node originalNode = queue.poll(); // node from original graph
+
+            // get the clone corresponding to the current original node
+            Node clonedNode = map.get(originalNode);
 
             // handle the neighbors
-            for (Node neighbor : newNode.neighbors) {
+            for (Node neighbor : originalNode.neighbors) {
                 if (!map.containsKey(neighbor)) {
                     // clone the neighbor
                     map.put(neighbor, new Node(neighbor.val));
@@ -81,8 +84,8 @@ public class CloneGraphBFS {
                     queue.add(neighbor);
                 }
 
-                // copy the neighbor
-                map.get(newNode).neighbors.add(map.get(neighbor));
+                // copy the neighbor - add the cloned neighbor to the cloned node’s neighbor list
+                clonedNode.neighbors.add(map.get(neighbor));
             }
         }
 
