@@ -13,6 +13,8 @@ public class CloneGraphBFS {
     public static HashMap<Integer, Node> map = new HashMap<>();
 
     public static void main(String[] args) {
+        CloneGraphBFS obj = new CloneGraphBFS();
+
         // Test case 1: [[2,4],[1,3],[2,4],[1,3]]
         int[][] adjList = {{2, 4}, {1, 3}, {2, 4}, {1, 3}};
 
@@ -27,7 +29,7 @@ public class CloneGraphBFS {
 
         Node head = GraphUtils.createGraph(adjList);
         List<List<Integer>> input = GraphUtils.getAdjList(head);
-        Node cloned = cloneGraph(head);
+        Node cloned = obj.cloneGraph(head);
         List<List<Integer>> output = GraphUtils.getAdjList(cloned);
         System.out.println(input + " => " + output); // Output : [[2, 4], [1, 3], [2, 4], [1, 3]]
 
@@ -35,7 +37,7 @@ public class CloneGraphBFS {
         int[][] adjList2 = {{}};
         Node head2 = GraphUtils.createGraph(adjList2);
         List<List<Integer>> input2 = GraphUtils.getAdjList(head2);
-        Node cloned2 = cloneGraph(head2);
+        Node cloned2 = obj.cloneGraph(head2);
         List<List<Integer>> output2 = GraphUtils.getAdjList(cloned2);
         System.out.println(input2 + " => " + output2); // Output : [[]]
 
@@ -43,7 +45,7 @@ public class CloneGraphBFS {
         int[][] adjList3 = {};
         Node head3 = GraphUtils.createGraph(adjList3);
         List<List<Integer>> input3 = GraphUtils.getAdjList(head3);
-        Node cloned3 = cloneGraph(head3);
+        Node cloned3 = obj.cloneGraph(head3);
         List<List<Integer>> output3 = GraphUtils.getAdjList(cloned3);
         System.out.println(input3 + " => " + output3); // Output : []
     }
@@ -55,7 +57,7 @@ public class CloneGraphBFS {
      * @param node the head node of the original graph
      * @return the head node of the cloned graph
      */
-    public static Node cloneGraph(Node node) {
+    public Node cloneGraph(Node node) {
         if (node == null)
             return null;
 
