@@ -8,7 +8,6 @@ import java.util.*;
 public class CourseScheduleBFS {
     List<Integer>[] adj;
     boolean[] visited;
-    boolean[] marked;
 
     public static void main(String[] args) {
         CourseScheduleBFS obj = new CourseScheduleBFS();
@@ -27,7 +26,7 @@ public class CourseScheduleBFS {
         boolean result3 = obj.canFinish(1, input3);
         System.out.println(Arrays.deepToString(input3) + " => " + result3); // Output : true
 
-        // Test case 4: [[]]
+        // Test case 4: [[0, 10], [3, 18], [5, 5], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]
         int[][] input4 = {{0, 10}, {3, 18}, {5, 5}, {6, 11}, {11, 14}, {13, 1}, {15, 1}, {17, 4}};
         boolean result4 = obj.canFinish(20, input4);
         System.out.println(Arrays.deepToString(input4) + " => " + result4); // Output : false
@@ -61,7 +60,7 @@ public class CourseScheduleBFS {
         // Step 3: Initialize queue with all courses having 0 in-degree
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
-            if (inDegree[i] == 0) {
+            if (inDegree[i] == 0) { // If inDegree[i] == 0, it means the course has no prerequisites, so it can be taken immediately
                 queue.offer(i);
                 visited[i] = true; // Marks that course i is being processed and avoids future re-enqueue
             }
@@ -71,19 +70,19 @@ public class CourseScheduleBFS {
 
         // Step 4: BFS processing
         while (!queue.isEmpty()) {
-            int current = queue.poll();
+            int current = queue.poll(); // current is a course ready to be taken
             processed++;
 
-            for (int neighbor : adj[current]) {
-                inDegree[neighbor]--;
-                if (inDegree[neighbor] == 0 && !visited[neighbor]) { // Ensures neighbor is only enqueued once when it's ready
-                    queue.offer(neighbor);
+            for (int neighbor : adj[current]) { // neighbor represents a course that depends on current
+                inDegree[neighbor]--; // After taking current, one of their prerequisites is fulfilled, so we decrement inDegree[neighbor]
+                if (inDegree[neighbor] == 0 && !visited[neighbor]) { // Ensures neighbor is only enqueued once when it's ready. If inDegree[neighbor] == 0, all prerequisites for neighbor are now completed.
+                    queue.offer(neighbor); // we add it to the queue to process in the next BFS steps
                     visited[neighbor] = true;
                 }
             }
         }
 
-        return processed == numCourses;
+        return processed == numCourses; // means all courses can be completed, otherwise, there is a cycle preventing some courses from being taken
     }
 
     /**

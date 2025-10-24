@@ -29,7 +29,7 @@ public class CourseScheduleDFS {
         boolean result3 = obj.canFinish(1, input3);
         System.out.println(Arrays.deepToString(input3) + " => " + result3); // Output : true
 
-        // Test case 4: [[]]
+        // Test case 4: [[0, 10], [3, 18], [5, 5], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]
         int[][] input4 = {{0, 10}, {3, 18}, {5, 5}, {6, 11}, {11, 14}, {13, 1}, {15, 1}, {17, 4}};
         boolean result4 = obj.canFinish(20, input4);
         System.out.println(Arrays.deepToString(input4) + " => " + result4); // Output : false
