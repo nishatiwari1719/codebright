@@ -30,6 +30,9 @@ public class SmallestMissingMultipleOfK {
 
     /**
      * HashSet approach with unbounded for loop.
+     * Approach inspired by LeetCode Discuss user: eunice
+     * Reference: LeetCode Discuss - "Unbounded Forloop | 3 Approach"
+     *
      * Most optimized solution.
      * TC: O(n)
      * SC: O(n)
@@ -49,6 +52,9 @@ public class SmallestMissingMultipleOfK {
 
 //    /**
 //     * Brute force approach using unbounded for loop and Java stream.
+//     * Approach inspired by LeetCode Discuss user: eunice
+//     * Reference: LeetCode Discuss - "Unbounded Forloop | 3 Approach"
+//     *
 //     * Simplest conceptually, but slowest in execution.
 //     * Very inefficient — for each multiple, it scans the entire array again.
 //     * High overhead from Arrays.stream() (creates a new stream each iteration).
