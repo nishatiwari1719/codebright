@@ -2,15 +2,13 @@ package blind75Sheet.breadthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
- * BFS Solution
+ * DFS Solution
  */
-public class NumberOfUnconnectedComponentsInUndirectedGraphBFS {
+public class NumberOfUnconnectedComponentsInUndirectedGraphDFS {
     public static void main(String[] args) {
-        NumberOfUnconnectedComponentsInUndirectedGraphBFS obj = new NumberOfUnconnectedComponentsInUndirectedGraphBFS();
+        NumberOfUnconnectedComponentsInUndirectedGraphDFS obj = new NumberOfUnconnectedComponentsInUndirectedGraphDFS();
 
         // Test case 1: [[0, 1], [2, 1], [3, 4]]
         int[][] input1 = {{0, 1}, {2, 1}, {3, 4}};
@@ -30,7 +28,7 @@ public class NumberOfUnconnectedComponentsInUndirectedGraphBFS {
     }
 
     /**
-     * BFS Solution to find all connected components in an undirected graph.
+     * DFS Solution to find all connected components in an undirected graph.
      * <p>
      * TC: O(V + E) Each vertex and edge is processed once
      * SC: O(V + E) Adjacency list + recursion stack
@@ -64,7 +62,8 @@ public class NumberOfUnconnectedComponentsInUndirectedGraphBFS {
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
                 // nodeCount++; //Return this if asked to return count of total components
-                ArrayList<Integer> component = bfs(adj, visited, i); // For LC question, only call bfs
+                ArrayList<Integer> component = new ArrayList<>();
+                dfs(adj, visited, i, component);
                 connectedComponents.add(component);
             }
         }
@@ -74,29 +73,20 @@ public class NumberOfUnconnectedComponentsInUndirectedGraphBFS {
     }
 
     /**
-     * BFS traversal to find all nodes in a connected component.
+     * DFS traversal to find all nodes in a connected component.
      *
-     * @param adj       adjacency list to track neighbors
-     * @param visited   array to track if a node is visited
-     * @param startNode vertex
+     * @param adj     adjacency list to track neighbors
+     * @param visited array to track if a node is visited
+     * @param node    vertex
      * @return connected component
      */
-    ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj, boolean[] visited, int startNode) {
-        ArrayList<Integer> component = new ArrayList<>();
+    ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj, boolean[] visited, int node, ArrayList<Integer> component) {
+        visited[node] = true;
+        component.add(node);
 
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(startNode);
-        visited[startNode] = true;
-
-        while (!queue.isEmpty()) {
-            int currentNode = queue.poll();
-            component.add(currentNode);
-
-            for (int neighbor : adj.get(currentNode)) {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    queue.add(neighbor);
-                }
+        for (int neighbor : adj.get(node)) {
+            if (!visited[neighbor]) {
+                dfs(adj, visited, neighbor, component);
             }
         }
 
