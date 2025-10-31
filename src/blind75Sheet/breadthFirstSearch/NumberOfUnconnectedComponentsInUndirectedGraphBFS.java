@@ -33,7 +33,7 @@ public class NumberOfUnconnectedComponentsInUndirectedGraphBFS {
      * BFS Solution to find all connected components in an undirected graph.
      * <p>
      * TC: O(V + E) Each vertex and edge is processed once
-     * SC: O(V + E) Adjacency list + recursion stack
+     * SC: O(V + E) Adjacency list + queue + visited array
      *
      * @param V     vertices
      * @param edges edges between the vertices

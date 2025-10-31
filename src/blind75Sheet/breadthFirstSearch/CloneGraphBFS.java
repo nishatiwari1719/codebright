@@ -86,7 +86,7 @@ public class CloneGraphBFS {
                     queue.add(neighbor);
                 }
 
-                // copy the neighbor - add the cloned neighbor to the cloned node’s neighbor list
+                // copy the neighbor, means add the cloned neighbor to the cloned node’s neighbor list
                 clonedNode.neighbors.add(map.get(neighbor));
             }
         }
