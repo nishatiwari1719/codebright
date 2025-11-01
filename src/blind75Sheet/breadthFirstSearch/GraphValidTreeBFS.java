@@ -61,8 +61,8 @@ public class GraphValidTreeBFS {
 
         // Build the adjacency list (assuming an undirected graph)
         for (int i = 0; i < m; i++) {
-            adj.get(edges.get(i).get(0)).add(edges.get(i).get(1));
-            adj.get(edges.get(i).get(1)).add(edges.get(i).get(0));
+            adj.get(edges.get(i).get(0)).add(edges.get(i).get(1)); // intends to execute this => adj.get(0).add(1);
+            adj.get(edges.get(i).get(1)).add(edges.get(i).get(0)); // intends to execute this => adj.get(1).add(0);
         }
 
         // Initialize the queue for BFS

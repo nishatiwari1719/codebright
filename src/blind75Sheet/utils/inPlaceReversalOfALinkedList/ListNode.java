@@ -4,7 +4,7 @@ package blind75Sheet.utils.inPlaceReversalOfALinkedList;
  * Definition for singly-linked list.
  */
 public class ListNode {
-    int val;
+    public int val;
     public ListNode next;
 
     ListNode() {
