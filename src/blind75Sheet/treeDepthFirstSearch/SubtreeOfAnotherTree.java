@@ -1,4 +1,4 @@
-package blind75Sheet.breadthFirstSearch;
+package blind75Sheet.treeDepthFirstSearch;
 
 import blind75Sheet.utils.breadFirstSearch.TreeNode;
 import blind75Sheet.utils.breadFirstSearch.TreeNodeUtils;
@@ -24,7 +24,7 @@ public class SubtreeOfAnotherTree {
     }
 
     /**
-     * DFS Approach - Preorder Traversal
+     * DFS Approach - Preorder Traversal - root,left,right
      * <p>
      * Perform DFS traversal on the main tree.
      * At each node, check if the subtree starting at that node is identical to subRoot
