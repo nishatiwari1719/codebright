@@ -63,4 +63,9 @@ public class ValidateBinarySearchTree {
         inOrderList.add(treeNode.val);
         helper(treeNode.right, inOrderList);
     }
+
+    /**
+     * TC = O(n)
+     * SC = O(n)
+     */
 }
