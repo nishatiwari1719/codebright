@@ -9,8 +9,10 @@ import java.util.List;
  * It finds all coordinates in the matrix where water can flow to both the Pacific and Atlantic oceans.
  */
 public class PacificAtlanticWaterFlowDFS {
-    // Directions for DFS traversal: right, left, down, up
-    private static final int[][] dir = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    /**
+     * Direction vectors: Right, Down, Left, Up
+     */
+    private static final int[][] dir = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // Right, Down, Left, Up
 
     public static void main(String[] args) {
         PacificAtlanticWaterFlowDFS obj = new PacificAtlanticWaterFlowDFS();
@@ -39,8 +41,8 @@ public class PacificAtlanticWaterFlowDFS {
             return res;
         }
 
-        int n = matrix.length;
-        int m = matrix[0].length;
+        int n = matrix.length; //n = number of rows
+        int m = matrix[0].length; //m = number of columns
 
         // Track cells reachable from Pacific and Atlantic oceans
         boolean[][] pacific = new boolean[n][m];

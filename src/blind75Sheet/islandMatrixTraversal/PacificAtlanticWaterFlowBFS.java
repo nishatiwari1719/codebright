@@ -7,9 +7,9 @@ import java.util.Queue;
 
 public class PacificAtlanticWaterFlowBFS {
     /**
-     * Direction vectors: down, up, right, left.
+     * Direction vectors: Right, Down, Left, Up
      */
-    private static final int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    private static final int[][] dir = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // Right, Down, Left, Up
 
     public static void main(String[] args) {
         PacificAtlanticWaterFlowBFS obj = new PacificAtlanticWaterFlowBFS();
@@ -38,7 +38,8 @@ public class PacificAtlanticWaterFlowBFS {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return res;
         }
-        int n = matrix.length, m = matrix[0].length;
+        int n = matrix.length; //n = number of rows
+        int m = matrix[0].length; //m = number of columns
 
         // Visited arrays for both oceans
         boolean[][] pacific = new boolean[n][m];
