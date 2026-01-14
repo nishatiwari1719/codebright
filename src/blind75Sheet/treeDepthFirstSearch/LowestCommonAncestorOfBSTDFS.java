@@ -3,10 +3,10 @@ package blind75Sheet.treeDepthFirstSearch;
 import blind75Sheet.utils.breadFirstSearch.TreeNode;
 import blind75Sheet.utils.breadFirstSearch.TreeNodeUtils;
 
-public class LowestCommonAncestorOfBST {
+public class LowestCommonAncestorOfBSTDFS {
 
     public static void main(String[] args) {
-        LowestCommonAncestorOfBST obj = new LowestCommonAncestorOfBST();
+        LowestCommonAncestorOfBSTDFS obj = new LowestCommonAncestorOfBSTDFS();
 
         // Test Case 1
         Integer[] rootInput1 = {6, 2, 8, 0, 4, 7, 9, null, null, 3, 5};
