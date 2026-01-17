@@ -43,6 +43,6 @@ public class ReverseBits {
 }
 
 /**
- * TC= O(32) -> Constant time
+ * TC= O(1) -> Constant time
  * SC= O(1) -> No extra space needed
  */
