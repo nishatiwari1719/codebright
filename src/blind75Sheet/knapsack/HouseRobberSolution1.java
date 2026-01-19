@@ -2,9 +2,9 @@ package blind75Sheet.knapsack;
 
 import java.util.Arrays;
 
-public class HouseRobberSolution {
+public class HouseRobberSolution1 {
     public static void main(String[] args) {
-        HouseRobberSolution obj = new HouseRobberSolution();
+        HouseRobberSolution1 obj = new HouseRobberSolution1();
 
         // Test Case 1
         int[] n1 = new int[]{1, 2, 3, 1};
@@ -18,6 +18,8 @@ public class HouseRobberSolution {
     }
 
     /**
+     * Solution 1: Dynamic Programming with an Array
+     *
      * Key Observations:
      * If a thief robs house i, they cannot rob house i-1 due to the constraints.
      * If the thief skips house i, their maximum profit up to house i is the same as the profit for house i-1.
