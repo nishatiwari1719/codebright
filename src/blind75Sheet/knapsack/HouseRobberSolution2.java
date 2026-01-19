@@ -20,7 +20,9 @@ public class HouseRobberSolution2 {
     /**
      * Solution 2: Optimized Space Dynamic Programming
      * <p>
-     * In Solution 1, we used an array dp to store results for all houses. However, only the last two values in the dp array are needed at any time. This insight allows us to reduce space complexity by using two variables to track these values.
+     * In Solution 1, we used an array dp to store results for all houses. However, only the last two values in
+     * the dp array are needed at any time. This insight allows us to reduce space complexity by using two variables
+     * to track these values.
      * <p>
      * Variables:
      * prev_rob: Maximum profit if the thief robs up to house i-2.
