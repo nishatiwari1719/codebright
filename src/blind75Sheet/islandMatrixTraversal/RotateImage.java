@@ -17,8 +17,8 @@ public class RotateImage {
                 {13, 3, 6, 7},
                 {15, 14, 12, 16}
         };
-        System.out.println("input1 = " + Arrays.deepToString(obj.rotate(input1))); // [[7,4,1],[8,5,2],[9,6,3]]
-        System.out.println("input2 = " + Arrays.deepToString(obj.rotate(input2))); // [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+        System.out.println("result1 = " + Arrays.deepToString(obj.rotate(input1))); // [[7,4,1],[8,5,2],[9,6,3]]
+        System.out.println("result2 = " + Arrays.deepToString(obj.rotate(input2))); // [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
     }
 
     public int[][] rotate(int[][] matrix) {
@@ -37,3 +37,8 @@ public class RotateImage {
         return matrix;
     }
 }
+
+/**
+ * TC= O(m x n)
+ * SC= O(1)
+ */
