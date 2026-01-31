@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * Approach: DFS
+ * Approach: BFS
  */
 public class KthSmallestElementInBSTSolution3 {
 
