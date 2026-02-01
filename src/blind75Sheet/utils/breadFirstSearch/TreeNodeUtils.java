@@ -1,6 +1,8 @@
 package blind75Sheet.utils.breadFirstSearch;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class TreeNodeUtils {
@@ -47,4 +49,34 @@ public class TreeNodeUtils {
 
         return findNode(root.right, val);
     }
+
+    public static List<Integer> toLevelOrderArray(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+
+            if (node == null) {
+                result.add(null);
+                continue;
+            }
+
+            result.add(node.val);
+            queue.offer(node.left);
+            queue.offer(node.right);
+        }
+
+        // Remove trailing nulls (LeetCode does this)
+        int i = result.size() - 1;
+        while (i >= 0 && result.get(i) == null) {
+            result.remove(i--);
+        }
+
+        return result;
+    }
+
 }
