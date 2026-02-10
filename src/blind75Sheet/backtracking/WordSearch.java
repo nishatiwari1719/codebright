@@ -28,7 +28,7 @@ public class WordSearch {
         System.out.println();
     }
 
-    // TC=O(R×C×4L), SC=O(L)
+    // TC=O(R×C×4^L), SC=O(L)
     // R is number of rows, C is number of columns in the board, and L is the length of the word being searched.
     public boolean exist(char[][] board, String word) {
         int n = board.length;
