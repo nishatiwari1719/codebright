@@ -55,6 +55,6 @@ public class StringEncodingDesign {
 }
 
 /**
- * TC=O(n^2)
+ * TC=O(n)
  * SC=O(n)
  */
