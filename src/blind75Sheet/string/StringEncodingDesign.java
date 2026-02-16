@@ -29,11 +29,11 @@ public class StringEncodingDesign {
     }
 
     public String encode(List<String> strs) {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (String s : strs) {
-            str += s.length() + "#" + s;
+            str.append(s.length()).append("#").append(s);
         }
-        return str;
+        return str.toString();
     }
 
     public List<String> decode(String str) {
@@ -55,6 +55,6 @@ public class StringEncodingDesign {
 }
 
 /**
- * TC=O(n^2)
+ * TC=O(n)
  * SC=O(n)
  */
