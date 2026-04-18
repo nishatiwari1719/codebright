@@ -62,6 +62,7 @@ public class SpiralMatrix {
 }
 
 /**
- * TC= O(n^2)
- * SC= O(1)
+ * TC= O(m * n), The algorithm visits every element exactly once, giving O(m × n) time complexity.
+ * SC= O(m * n), The algorithm itself only uses a few boundary variables (rowBegin, rowEnd, colBegin, colEnd),
+ * so the auxiliary space is O(1). However, if we include the output list, the total space complexity becomes O(m × n).
  */
