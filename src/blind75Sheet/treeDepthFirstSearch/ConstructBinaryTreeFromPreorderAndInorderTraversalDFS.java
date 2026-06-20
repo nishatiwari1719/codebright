@@ -20,7 +20,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversalDFS {
         int[] preorder2 = {-1};
         int[] inorder2 = {-1};
         TreeNode treeNode2 = obj.buildTree(preorder2, inorder2);
-        System.out.println("preorder2:" + Arrays.toString(preorder2) + ", inorder2:" + Arrays.toString(inorder2) + ", output:" + treeNode2); // Output = [3,9,20,null,null,15,7]
+        System.out.println("preorder2:" + Arrays.toString(preorder2) + ", inorder2:" + Arrays.toString(inorder2) + ", output:" + treeNode2); // Output = [-1]
     }
 
     /**

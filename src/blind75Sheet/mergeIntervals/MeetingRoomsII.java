@@ -34,8 +34,10 @@ public class MeetingRoomsII {
 
         int[][] input1 = {{0, 30}, {5, 10}, {15, 20}};
         int[][] input2 = {{7, 10}, {2, 4}};
+        int[][] input3 = {{1, 4}, {10, 15}, {7, 10}};
         System.out.println("input1 = " + obj.minMeetingRooms(input1)); //Output: 2
         System.out.println("input2 = " + obj.minMeetingRooms(input2)); //Output: 1
+        System.out.println("input3 = " + obj.minMeetingRooms(input3)); //Output: 1
     }
 
     /**
