@@ -33,10 +33,11 @@ public class WordSearch {
     public boolean exist(char[][] board, String word) {
         int n = board.length;
         int m = board[0].length;
+        boolean[][] visited = new boolean[n][m];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (dfs(board, i, j, 0, word)) {
+                if (dfs(board, i, j, 0, word, visited)) {
                     return true;
                 }
             }
@@ -44,29 +45,29 @@ public class WordSearch {
         return false;
     }
 
-    private boolean dfs(char[][] board, int i, int j, int index, String word) {
+    private boolean dfs(char[][] board, int i, int j, int index, String word, boolean[][] visited) {
         // Base case: full word match
         if (index == word.length()) {
             return true;
         }
 
         // Boundary + mismatch check
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] != word.charAt(index)) {
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length
+                || board[i][j] != word.charAt(index) || visited[i][j]) {
             return false;
         }
 
         // Mark cell as visited
-        char temp = board[i][j];
-        board[i][j] = '#';
+        visited[i][j] = true;
 
         // Explore all four directions
-        boolean found = dfs(board, i + 1, j, index + 1, word) ||
-                dfs(board, i - 1, j, index + 1, word) ||
-                dfs(board, i, j + 1, index + 1, word) ||
-                dfs(board, i, j - 1, index + 1, word);
+        boolean found = dfs(board, i + 1, j, index + 1, word, visited) ||
+                dfs(board, i - 1, j, index + 1, word, visited) ||
+                dfs(board, i, j + 1, index + 1, word, visited) ||
+                dfs(board, i, j - 1, index + 1, word, visited);
 
         // Backtrack (restore original value)
-        board[i][j] = temp;
+        visited[i][j] = false;
 
         return found;
     }
