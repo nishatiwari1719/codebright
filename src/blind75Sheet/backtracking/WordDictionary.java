@@ -5,11 +5,10 @@ package blind75Sheet.backtracking;
  */
 class WordDictionary {
 
-    boolean isEndOfWord;
-    private WordDictionary[] children;
+    TrieNode root;
+
     public WordDictionary() {
-        children = new WordDictionary[26];
-        isEndOfWord = false;
+        root = new TrieNode();
     }
 
     public static void main(String[] args) {
@@ -28,34 +27,66 @@ class WordDictionary {
     }
 
     public void addWord(String word) {
-        WordDictionary curr = this;
+        TrieNode node = root;
         for (char c : word.toCharArray()) {
-            if (curr.children[c - 'a'] == null) {
-                curr.children[c - 'a'] = new WordDictionary();
+            TrieNode curr = node.children[c - 'a']; // we check if c is present in node's children
+            if (curr == null) { // means character c is not present in its children
+                node.children[c - 'a'] = new TrieNode(); // so we will create a new TrieNode and assign this character as one of its children
+                curr = node.children[c - 'a']; // also assign it to current curr
             }
-            curr = curr.children[c - 'a'];
+            node = curr;
         }
-        curr.isEndOfWord = true;
+        node.isLast = true;
     }
 
     public boolean search(String word) {
-        WordDictionary curr = this;
-        for (int i = 0; i < word.length(); ++i) {
-            char c = word.charAt(i);
-            if (c == '.') {
-                for (WordDictionary ch : curr.children) {
-                    if (ch != null && ch.search(word.substring(i + 1))) {
+        return find(0, word, root);
+    }
+
+    // Recursive function
+    private boolean find(int index, String word, TrieNode node) {
+        // what happens when dot is at the end
+        if (index == word.length() - 1) {
+            if (word.charAt(index) == '.') {
+                for (int i = 0; i < 26; i++) {
+                    if (node.children[i] != null && node.children[i].isLast) {
                         return true;
                     }
                 }
                 return false;
             }
-            if (curr.children[c - 'a'] == null) {
-                return false;
+            // what if the last character is not null and not dot (base case)
+            if (node.children[word.charAt(index) - 'a'] != null
+                    && node.children[word.charAt(index) - 'a'].isLast) {
+                return true;
             }
-            curr = curr.children[c - 'a'];
+            return false;
         }
-        return curr != null && curr.isEndOfWord;
+        // Dot in the middle
+        if (word.charAt(index) == '.') {
+            for (int i = 0; i < 26; i++) {
+                if (node.children[i] != null && find(index + 1, word, node.children[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // No dot, some character
+        if (node.children[word.charAt(index) - 'a'] != null) {
+            return find(index + 1, word, node.children[word.charAt(index) - 'a']);
+        }
+        return false;
+    }
+
+    class TrieNode {
+        TrieNode[] children;
+        boolean isLast;
+
+        public TrieNode() {
+            children = new TrieNode[26];
+            isLast = false;
+        }
     }
 }
 
@@ -67,6 +98,11 @@ class WordDictionary {
  * | `search` (no `.`)   | `O(L)`          | `O(1)`           |
  * | `search` (with `.`) | `O(26^L)` worst | `O(L)` stack     |
  * | Trie storage        | —               | `O(N * L)`       |
+ * <p>
+ * Your WordDictionary object will be instantiated and called as such:
+ * WordDictionary obj = new WordDictionary();
+ * obj.addWord(word);
+ * boolean param_2 = obj.search(word);
  */
 
 /**
