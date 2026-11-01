@@ -36,13 +36,15 @@ public class GroupAnagrams {
         for (String str : strs) {
             String frequencyString = getFrequencyString(str);
 
-            if (frequencyStringMap.containsKey(frequencyString)) {
-                frequencyStringMap.get(frequencyString).add(str);
-            } else {
-                List<String> strList = new ArrayList<>();
-                strList.add(str);
-                frequencyStringMap.put(frequencyString, strList);
-            }
+//            if (frequencyStringMap.containsKey(frequencyString)) {
+//                frequencyStringMap.get(frequencyString).add(str);
+//            } else {
+//                List<String> strList = new ArrayList<>();
+//                strList.add(str);
+//                frequencyStringMap.put(frequencyString, strList);
+//            }
+            frequencyStringMap.putIfAbsent(frequencyString, new ArrayList<>());
+            frequencyStringMap.get(frequencyString).add(str);
         }
 
         return new ArrayList<>(frequencyStringMap.values());

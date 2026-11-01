@@ -25,11 +25,45 @@ public class JumpGame {
      */
     public boolean canJump(int[] nums) {
         int finalPosition = nums.length - 1;
-        for (int index = nums.length - 2; index >= 0; index--) {
-            if (index + nums[index] >= finalPosition) {
-                finalPosition = index;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (i + nums[i] >= finalPosition) {
+                finalPosition = i;
             }
         }
         return finalPosition == 0;
     }
+
+//    Brute Force Approach
+//    public boolean canJump(int[] nums) {
+//        return canReach(nums, 0);
+//    }
+//
+//    private boolean canReach(int[] nums, int i) {
+//        int lastIndex = nums.length - 1;
+//
+//        // Reached or passed the last i
+//        if (i >= lastIndex) {
+//            return true;
+//        }
+//
+//        // Cannot move from this i
+//        if (nums[i] == 0) {
+//            return false;
+//        }
+//
+//        // Try every possible jump
+//        int furthest = Math.min(i + nums[i], lastIndex);
+//        for (int next = i + 1; next <= furthest; next++) {
+//            if (canReach(nums, next)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    Complexity of brute force
+//- Time: (O(2^n)) as a commonly quoted upper bound.
+//- Auxiliary space: (O(n)) for the recursion stack.
+//    Why exponential time? The algorithm may explore many different jump sequences, and multiple paths can revisit
+//    the same index i. In the worst case, the number of recursive paths can grow exponentially with array length.
 }

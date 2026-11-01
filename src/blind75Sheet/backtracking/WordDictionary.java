@@ -5,6 +5,16 @@ package blind75Sheet.backtracking;
  */
 class WordDictionary {
 
+    class TrieNode {
+        TrieNode[] children;
+        boolean isLast;
+
+        public TrieNode() {
+            children = new TrieNode[26];
+            isLast = false;
+        }
+    }
+
     TrieNode root;
 
     public WordDictionary() {
@@ -79,15 +89,6 @@ class WordDictionary {
         return false;
     }
 
-    class TrieNode {
-        TrieNode[] children;
-        boolean isLast;
-
-        public TrieNode() {
-            children = new TrieNode[26];
-            isLast = false;
-        }
-    }
 }
 
 /**
