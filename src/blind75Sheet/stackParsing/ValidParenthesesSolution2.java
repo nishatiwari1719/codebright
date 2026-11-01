@@ -1,5 +1,6 @@
 package blind75Sheet.stackParsing;
 
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -25,19 +26,40 @@ public class ValidParenthesesSolution2 {
         System.out.println("s5=" + s5 + ", result=" + obj.isValid(s5));
     }
 
+//    public boolean isValid(String s) {
+//        Stack<Character> stack = new Stack();
+//        for (char ch : s.toCharArray()) {
+//            if (ch == '(') {
+//                stack.push(')');
+//            } else if (ch == '{') {
+//                stack.push('}');
+//            } else if (ch == '[') {
+//                stack.push(']');
+//            } else if (stack.isEmpty() || stack.pop() != ch) {
+//                return false;
+//            }
+//        }
+//        return stack.isEmpty();
+//    }
+
+//    Alternate Optimal Solution: Using closing brackets as key and opening brackets as values in HashMap
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack();
-        for (char ch : s.toCharArray()) {
-            if (ch == '(') {
-                stack.push(')');
-            } else if (ch == '{') {
-                stack.push('}');
-            } else if (ch == '[') {
-                stack.push(']');
-            } else if (stack.isEmpty() || stack.pop() != ch) {
-                return false;
+        Stack<Character> stack = new Stack<>();
+        // Map each closing bracket to its matching opening bracket
+        Map<Character, Character> matchMap = Map.of(')', '(', ']', '[', '}', '{');
+
+        for (char c : s.toCharArray()) {
+            if (matchMap.containsKey(c)) {
+                // Closing bracket: check if it matches the top of the stack
+                if (stack.isEmpty() || stack.pop() != matchMap.get(c)) {
+                    return false;
+                }
+            } else {
+                // Opening bracket: push onto stack
+                stack.push(c);
             }
         }
+        // Valid only if all opening brackets were matched
         return stack.isEmpty();
     }
 }
