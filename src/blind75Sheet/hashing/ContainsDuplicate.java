@@ -26,18 +26,33 @@ public class ContainsDuplicate {
     }
 
     /**
-     * Approach: HashSet, TC=O(n), SC=O(n)
+     * Approach: HashSet - using value returned from add(...), TC=O(n), SC=O(n)
+     * @param nums
+     * @return true, if contains duplicate, false otherwise
      */
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> seen = new HashSet<>();
         for (int num : nums) {
-            if (seen.contains(num)) {
+            if (!seen.add(num)) {
                 return true;
             }
-            seen.add(num);
         }
         return false;
     }
+
+    /**
+     * Approach: HashSet, TC=O(n), SC=O(n)
+     */
+//    public boolean containsDuplicate(int[] nums) {
+//        Set<Integer> seen = new HashSet<>();
+//        for (int num : nums) {
+//            if (seen.contains(num)) {
+//                return true;
+//            }
+//            seen.add(num);
+//        }
+//        return false;
+//    }
 
     /**
      * Approach: HashMap, TC=O(n), SC=O(n)
