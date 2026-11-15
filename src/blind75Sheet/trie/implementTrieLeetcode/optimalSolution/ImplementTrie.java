@@ -1,6 +1,4 @@
-package blind75Sheet.trie;
-
-import blind75Sheet.utils.trie.TrieNode;
+package blind75Sheet.trie.implementTrieLeetcode.optimalSolution;
 
 /**
  * LC 208. Implement Trie (Prefix Tree)
@@ -20,45 +18,45 @@ class ImplementTrie {
 }
 
 class Trie {
-    TrieNode root;
+    // Optimal approach
+    Trie[] children;
+    boolean isEnd;
 
     public Trie() {
-        root = new TrieNode();
+        children = new Trie[26];
+        isEnd = false;
     }
 
     public void insert(String word) {
-        TrieNode node = root;
+        Trie node = this;
         for (char c : word.toCharArray()) {
             int index = c - 'a';
             if (node.children[index] == null) {
-                node.children[index] = new TrieNode();
+                node.children[index] = new Trie();
             }
             node = node.children[index];
         }
-        node.isWord = true;
+        node.isEnd = true;
     }
 
     public boolean search(String word) {
-        TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            int index = c - 'a';
-            if (node.children[index] == null) {
-                return false;
-            }
-            node = node.children[index];
-        }
-        return node.isWord;
+        Trie node = traverse(word);
+        return node != null && node.isEnd == true;
     }
 
     public boolean startsWith(String prefix) {
-        TrieNode node = root;
-        for (char c : prefix.toCharArray()) {
+        return traverse(prefix) != null;
+    }
+
+    private Trie traverse(String s) {
+        Trie node = this;
+        for (char c : s.toCharArray()) {
             int index = c - 'a';
             if (node.children[index] == null) {
-                return false;
+                return null;
             }
             node = node.children[index];
         }
-        return true;
+        return node;
     }
 }

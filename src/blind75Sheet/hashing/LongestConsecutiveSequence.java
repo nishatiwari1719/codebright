@@ -26,6 +26,7 @@ public class LongestConsecutiveSequence {
 
     /**
      * TC=O(n), SC=O(n)
+     * Optimal Approach: Using HashSet
      */
     public int longestConsecutive(int[] nums) {
         Set<Integer> numSet = new HashSet<>();
@@ -47,4 +48,50 @@ public class LongestConsecutiveSequence {
 
         return longest;
     }
+
+    // Second best approach: Using sorting
+    // Once sorted, we can identify the longest sequence in a single traversal.
+//    public int longestConsecutive(int[] nums) {
+//        if (nums.length == 0)
+//            return 0;
+//
+//        Arrays.sort(nums);
+//        int longest = 1;
+//        int current = 1;
+//
+//        for (int i = 1; i < nums.length; i++) {
+//            if (nums[i] == nums[i - 1]) {
+//                continue;
+//            } else if (nums[i] == nums[i - 1] + 1) {
+//                current++;
+//            } else {
+//                current = 1;
+//            }
+//            longest = Math.max(longest, current);
+//        }
+//        return longest;
+//    }
+
+    // Brute Force approach
+//    public int longestConsecutive(int[] nums) {
+//        int longest = 0;
+//        for (int num : nums) {
+//            int current = num;
+//            int currentStreak = 1;
+//            while (arrayContains(nums, current + 1)) {
+//                current++;
+//                currentStreak++;
+//            }
+//            longest = Math.max(longest, currentStreak);
+//        }
+//        return longest;
+//    }
+//
+//    private boolean arrayContains(int[] nums, int target) {
+//        for (int num : nums) {
+//            if (num == target)
+//                return true;
+//        }
+//        return false;
+//    }
 }
