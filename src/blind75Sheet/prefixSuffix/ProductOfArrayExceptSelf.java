@@ -23,22 +23,24 @@ public class ProductOfArrayExceptSelf {
      */
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        int[] ans = new int[n];
-        Arrays.fill(ans, 1);
-        int curr = 1;
-        for (int i = 0; i < n; i++) {
-            ans[i] *= curr;
-            curr *= nums[i];
+        int[] result = new int[n];
+
+        result[0] = 1;
+        for (int i = 1; i < n; i++) {
+            result[i] = result[i - 1] * nums[i - 1];
         }
-        curr = 1;
+
+        int suffixProduct = 1;
         for (int i = n - 1; i >= 0; i--) {
-            ans[i] *= curr;
-            curr *= nums[i];
+            result[i] *= suffixProduct;
+            suffixProduct *= nums[i];
         }
-        return ans;
+
+        return result;
     }
 
     // Approach: Prefix Product and Suffix Product
+//    TC=O(n), SC=O(n)
 //    public int[] productExceptSelf(int[] nums) {
 //        int n = nums.length;
 //        int[] pre = new int[n];
@@ -63,6 +65,7 @@ public class ProductOfArrayExceptSelf {
 //    }
 
     // Approach: Dividing the product of array with the number, TC=O(n), SC=O(1)
+    //    This is explicitly mentioned in the question to not apply.
     // This will throw ArithmeticException: / by zero
 //        public int[] productExceptSelf(int[] nums) {
 //            int n = nums.length;
